@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #12141c;
+  color: #e6e6f0;
+  line-height: 1.5;
+}
+
+
+header {
+  background: linear-gradient(135deg, #5b2a86, #8e3fce);
+  color: #ffffff;
+  text-align: left;
+  padding: 32px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+header p {
+  margin: 6px 0 0;
+  font-style: normal;
+  color: #e6d3fa;
+}
+
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+
+.producte {
+  background-color: #1c1f2b;
+  border: none;
+  border-left: 5px solid #a855f7;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 340px;
+}
+
+.producte h2 {
+  margin-top: 0;
+  color: #d8b4fe;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  border-bottom: none;
+  padding-bottom: 8px;
+}
+
+.descripcio {
+  color: #a0a4b8;
+}
+
+.preu {
+  margin: 4px 0;
+  color: #c7c9d9;
+}
+
+.total {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #ffb454;
+  margin: 16px 0;
+  padding: 10px 0;
+  border-top: 1px dashed #3a3f52;
+  border-bottom: 1px dashed #3a3f52;
+}
+
+.estoc {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.ref {
+  font-size: 0.8em;
+  color: #666a7d;
+  text-align: right;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+}
+
+
+footer {
+  background-color: #0c0d13;
+  color: #7d8199;
+  text-align: center;
+  padding: 16px;
+  font-size: 0.9em;
+}

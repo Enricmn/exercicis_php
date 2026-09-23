@@ -15,7 +15,7 @@ $direccio = 'Av setnemat 83 G'
 
 <p>Preu amb IVA: <?= $total;  ?> EUR </p>
 
-<p>Disponibilitat: <?= $estoc ?></p>
+<p>Disponibilitat: <?php echo $producte ?></p>
 
 <h2>Dades Personals</h2>
 
