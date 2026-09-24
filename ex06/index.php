@@ -37,9 +37,9 @@ const REF= "CUE-132412";
     <article class="producte">
       <h2> <?= PRODUCTE ?></h2>
       <p class="descripcio"><?= DESCRIPCIO?></p>
-      <p class="preu"> Preu sense IVA: <?= number_format($preuBase,2,',') . MONEDA?></p>
-      <p class="preu">IVA (21%): <?= IVA?></p>
-      <p class="total"> TOTAL: <?= number_format($preuFinal,2,','). MONEDA?> </p>
+      <p class="preu"> Preu sense IVA:  <?= number_format($preuBase,2,',') . MONEDA?></p>
+      <p class="preu">IVA <?= IVA?>% : <?= number_format( $preuFinal,2,',' ). MONEDA?></p>
+      <p class="total"> TOTAL: <?= number_format( $preuFinal,2,',' ). MONEDA?> </p>
 
       <p class="estoc"> Unitats disponibles: <?= $estoc?></p>
       <p class="ref"> <?= REF?> </p>
