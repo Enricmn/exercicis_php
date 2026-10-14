@@ -1,0 +1,499 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@500;800&family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --rosa: #ff2e88;
+  --lila: #8a2be2;
+  --cian: #00e5ff;
+  --groc: #ffd500;
+  --taronja: #ff6a00;
+  --fosc: #0b0614;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===== CEL ===== */
+html {
+  min-height: 100%;
+  background: linear-gradient(to bottom, #05010f 0%, #1a0533 40%, #4b0a5e 55%, #0b0614 55.1%);
+  overflow-x: hidden;
+}
+
+/* Sol retro amb franges */
+html::before {
+  content: '';
+  position: fixed;
+  left: 50%;
+  top: 55vh;
+  width: min(70vw, 520px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -62%);
+  border-radius: 50%;
+  background: linear-gradient(to bottom, var(--groc) 0%, var(--taronja) 45%, var(--rosa) 75%, var(--lila) 100%);
+  -webkit-mask: linear-gradient(to bottom, #000 50%, transparent 50%) top / 100% 100% no-repeat,
+                repeating-linear-gradient(to bottom, #000 0 18px, transparent 18px 26px);
+  mask: linear-gradient(to bottom, #000 50%, transparent 50%) top / 100% 100% no-repeat,
+        repeating-linear-gradient(to bottom, #000 0 18px, transparent 18px 26px);
+  filter: drop-shadow(0 0 60px rgba(255, 46, 136, 0.9));
+  animation: sol 5s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes sol {
+  from { filter: drop-shadow(0 0 40px rgba(255, 106, 0, 0.8)); }
+  to   { filter: drop-shadow(0 0 90px rgba(255, 46, 136, 1)); }
+}
+
+/* Terra amb graella en perspectiva que avança */
+html::after {
+  content: '';
+  position: fixed;
+  left: -50%;
+  top: 55vh;
+  width: 200%;
+  height: 60vh;
+  background:
+    linear-gradient(to bottom, var(--fosc) 0%, transparent 25%),
+    repeating-linear-gradient(to right, rgba(255, 46, 136, 0.8) 0 2px, transparent 2px 80px),
+    repeating-linear-gradient(to bottom, rgba(0, 229, 255, 0.8) 0 2px, transparent 2px 80px);
+  transform-origin: top;
+  transform: perspective(300px) rotateX(60deg);
+  animation: graella 1s linear infinite;
+  z-index: 0;
+}
+
+@keyframes graella {
+  from { background-position: 0 0, 0 0, 0 0; }
+  to   { background-position: 0 0, 0 0, 0 80px; }
+}
+
+/* ===== ESCENARI ===== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 16px 80px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Estrelles que parpellegen */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 45vh 0;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 25% 70%, #fff, transparent),
+    radial-gradient(2px 2px at 40% 35%, #fff, transparent),
+    radial-gradient(1px 1px at 55% 15%, #fff, transparent),
+    radial-gradient(2px 2px at 70% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 85% 25%, #fff, transparent),
+    radial-gradient(2px 2px at 92% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 5% 85%, #fff, transparent),
+    radial-gradient(1px 1px at 33% 5%, #fff, transparent),
+    radial-gradient(2px 2px at 63% 90%, #fff, transparent);
+  background-size: 300px 300px;
+  animation: estrelles 3s ease-in-out infinite alternate;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes estrelles {
+  from { opacity: 0.3; }
+  to   { opacity: 1; }
+}
+
+/* Làsers que escombren l'escenari */
+body::after {
+  content: '';
+  position: fixed;
+  left: 50%;
+  bottom: -10vh;
+  width: 250vmax;
+  height: 250vmax;
+  transform: translateX(-50%);
+  background: repeating-conic-gradient(from 0deg at 50% 100%,
+    rgba(0, 229, 255, 0.35) 0deg 0.6deg,
+    transparent 0.6deg 12deg,
+    rgba(255, 46, 136, 0.35) 12deg 12.6deg,
+    transparent 12.6deg 24deg);
+  -webkit-mask: radial-gradient(circle at 50% 100%, #000 0%, transparent 45%);
+  mask: radial-gradient(circle at 50% 100%, #000 0%, transparent 45%);
+  mix-blend-mode: screen;
+  transform-origin: 50% 100%;
+  animation: lasers 6s ease-in-out infinite alternate;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes lasers {
+  from { transform: translateX(-50%) rotate(-15deg); }
+  to   { transform: translateX(-50%) rotate(15deg); }
+}
+
+/* ===== TÍTOL ===== */
+h1 {
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 9vw, 5.5rem);
+  letter-spacing: 6px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0 0 40px;
+  background: linear-gradient(180deg, #fff 0%, var(--groc) 35%, var(--rosa) 65%, var(--lila) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: neo 3s infinite, glitch 4s infinite steps(1);
+}
+
+@keyframes neo {
+  0%, 100% { filter: drop-shadow(0 0 8px var(--rosa)) drop-shadow(0 0 25px var(--lila)); }
+  50%      { filter: drop-shadow(0 0 15px var(--cian)) drop-shadow(0 0 45px var(--rosa)); }
+}
+
+/* Cada pocs segons el títol "es trenca" */
+@keyframes glitch {
+  0%, 88%, 100% { transform: none; filter: drop-shadow(0 0 10px var(--rosa)) drop-shadow(0 0 30px var(--lila)); }
+  90% { transform: translate(-6px, 2px) skewX(10deg);  filter: drop-shadow(-6px 0 0 var(--cian)) drop-shadow(6px 0 0 var(--rosa)); }
+  92% { transform: translate(6px, -2px) skewX(-10deg); filter: drop-shadow(6px 0 0 var(--cian)) drop-shadow(-6px 0 0 var(--groc)); }
+  94% { transform: translate(-3px, 0) scaleY(1.1);     filter: drop-shadow(-3px 0 0 var(--rosa)) drop-shadow(3px 0 0 var(--cian)); }
+  96% { transform: translate(2px, 1px);                 filter: drop-shadow(0 0 20px #fff); }
+}
+
+/* ===== FORMULARI ===== */
+form,
+.targeta {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  padding: 40px 34px 36px;
+  border-radius: 20px;
+  background:
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 4px),
+    rgba(15, 5, 30, 0.82);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(138, 43, 226, 0.5);
+  animation: entrada 1s cubic-bezier(.2, 1.4, .4, 1), flotar 6s ease-in-out 1s infinite;
+}
+
+/* Vora de neó giratòria */
+form::before,
+.targeta::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  padding: 3px;
+  border-radius: 23px;
+  background: conic-gradient(from var(--angle), var(--rosa), var(--groc), var(--cian), var(--lila), var(--rosa));
+  /* Només es veu la vora: es retalla el contingut del mig */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 12px var(--rosa));
+  pointer-events: none;
+  animation: girar 3s linear infinite;
+}
+
+/* Equalitzador musical sota la targeta */
+form::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -55px;
+  width: 220px;
+  height: 40px;
+  transform: translateX(-50%);
+  background:
+    linear-gradient(var(--rosa), var(--lila)) 0%   100% / 18px 30% no-repeat,
+    linear-gradient(var(--groc), var(--rosa)) 14%  100% / 18px 60% no-repeat,
+    linear-gradient(var(--cian), var(--lila)) 28%  100% / 18px 90% no-repeat,
+    linear-gradient(var(--rosa), var(--lila)) 42%  100% / 18px 50% no-repeat,
+    linear-gradient(var(--groc), var(--rosa)) 57%  100% / 18px 80% no-repeat,
+    linear-gradient(var(--cian), var(--lila)) 71%  100% / 18px 40% no-repeat,
+    linear-gradient(var(--rosa), var(--lila)) 85%  100% / 18px 70% no-repeat,
+    linear-gradient(var(--groc), var(--rosa)) 100% 100% / 18px 20% no-repeat;
+  filter: drop-shadow(0 0 8px var(--rosa));
+  animation: eq 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes eq {
+  0% {
+    background-size: 18px 30%, 18px 60%, 18px 90%, 18px 50%, 18px 80%, 18px 40%, 18px 70%, 18px 20%;
+  }
+  33% {
+    background-size: 18px 80%, 18px 20%, 18px 50%, 18px 100%, 18px 30%, 18px 90%, 18px 40%, 18px 60%;
+  }
+  66% {
+    background-size: 18px 50%, 18px 100%, 18px 20%, 18px 70%, 18px 60%, 18px 30%, 18px 100%, 18px 80%;
+  }
+  100% {
+    background-size: 18px 100%, 18px 40%, 18px 70%, 18px 20%, 18px 100%, 18px 60%, 18px 30%, 18px 100%;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes girar {
+  to { --angle: 360deg; }
+}
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(120px) scale(0.6) rotateX(40deg); }
+  to   { opacity: 1; transform: translateY(0) scale(1) rotateX(0); }
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* ===== CAMPS ===== */
+label {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--cian);
+  text-shadow: 0 0 8px var(--cian);
+  margin: 20px 0 8px;
+}
+
+label::before {
+  content: '▶ ';
+  color: var(--rosa);
+  text-shadow: 0 0 8px var(--rosa);
+}
+
+label:first-child {
+  margin-top: 0;
+}
+
+input,
+select {
+  padding: 14px 16px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid rgba(0, 229, 255, 0.35);
+  border-radius: 10px;
+  box-shadow: inset 0 0 15px rgba(0, 229, 255, 0.15);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+input:hover,
+select:hover {
+  border-color: var(--cian);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--rosa);
+  box-shadow:
+    inset 0 0 15px rgba(255, 46, 136, 0.3),
+    0 0 0 4px rgba(255, 46, 136, 0.25),
+    0 0 30px rgba(255, 46, 136, 0.7);
+  transform: translateY(-2px) scale(1.02);
+}
+
+select option {
+  background: var(--fosc);
+  color: #fff;
+}
+
+/* ===== BOTÓ ===== */
+button {
+  position: relative;
+  overflow: hidden;
+  margin-top: 34px;
+  padding: 18px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+  background: linear-gradient(90deg, var(--rosa), var(--lila), var(--cian), var(--rosa));
+  background-size: 300% 100%;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  animation: botoGradient 4s linear infinite, batec 1.2s ease-in-out infinite;
+  transition: transform 0.2s;
+}
+
+@keyframes botoGradient {
+  to { background-position: 300% 0; }
+}
+
+/* Batega com un baix */
+@keyframes batec {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 46, 136, 0.7), 0 0 0 0 rgba(255, 46, 136, 0.6); }
+  50%      { box-shadow: 0 0 40px rgba(0, 229, 255, 0.9), 0 0 0 12px rgba(255, 46, 136, 0); }
+}
+
+/* Reflex que creua el botó */
+button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: skewX(-20deg);
+  animation: brillo 2.5s ease-in-out infinite;
+}
+
+@keyframes brillo {
+  0%, 50% { left: -100%; }
+  100%    { left: 150%; }
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.06);
+  letter-spacing: 10px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ===== PÀGINA DE RESULTAT ===== */
+.targeta {
+  max-width: 620px;
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+  margin: 28px 0 12px;
+  color: var(--groc);
+  text-shadow: 0 0 10px var(--taronja), 0 0 25px var(--rosa);
+}
+
+h2:first-child {
+  margin-top: 0;
+}
+
+h2::before {
+  content: '◆ ';
+  color: var(--rosa);
+}
+
+/* Les dades es mostren com una terminal hacker */
+pre {
+  position: relative;
+  margin: 0;
+  padding: 44px 20px 20px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #39ff14;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.8);
+  background:
+    repeating-linear-gradient(to bottom, rgba(57, 255, 20, 0.05) 0 1px, transparent 1px 3px),
+    #020a02;
+  border: 1px solid rgba(57, 255, 20, 0.5);
+  border-radius: 10px;
+  box-shadow: inset 0 0 25px rgba(57, 255, 20, 0.15), 0 0 20px rgba(57, 255, 20, 0.25);
+  overflow-x: auto;
+  animation: encendre 0.6s ease-out both;
+}
+
+/* Barra de la finestra amb els tres botonets */
+pre::before {
+  content: '● ● ●';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--rosa);
+  text-shadow: none;
+  background: rgba(57, 255, 20, 0.1);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.3);
+}
+
+/* Cursor que parpelleja */
+pre::after {
+  content: '█';
+  animation: cursor 1s steps(1) infinite;
+}
+
+@keyframes cursor {
+  50% { opacity: 0; }
+}
+
+/* La pantalla s'encén com un monitor antic */
+@keyframes encendre {
+  0%   { opacity: 0; transform: scaleY(0.02); filter: brightness(4); }
+  60%  { opacity: 1; transform: scaleY(1.05); }
+  100% { transform: scaleY(1); filter: brightness(1); }
+}
+
+pre:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+
+/* Enllaç "Tornar" amb el mateix aspecte que el botó */
+.boto {
+  display: block;
+  margin-top: 34px;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+  background: linear-gradient(90deg, var(--rosa), var(--lila), var(--cian), var(--rosa));
+  background-size: 300% 100%;
+  border-radius: 12px;
+  animation: botoGradient 4s linear infinite, batec 1.2s ease-in-out infinite;
+  transition: transform 0.2s, letter-spacing 0.2s;
+}
+
+.boto::before {
+  content: '◀ ';
+}
+
+.boto:hover {
+  transform: translateY(-4px) scale(1.04);
+  letter-spacing: 10px;
+}
+
+/* Per a qui té les animacions desactivades al sistema */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after,
+  html::before, html::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
