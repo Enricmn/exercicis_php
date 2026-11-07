@@ -1,0 +1,89 @@
+body {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: Arial, sans-serif;
+  background: #eef2f1;
+  color: #222;
+}
+
+header {
+  background: #2E7D6B;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  margin: .3rem 0 0;
+}
+
+footer {
+  margin-top: 1rem;
+  padding: .7rem;
+  text-align: center;
+  background: #1B4D42;
+  color: white;
+  border-radius: 6px;
+}
+
+h2 {
+  color: #2E7D6B;
+}
+
+.graella {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.targeta {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  padding: 1rem;
+}
+
+.targeta h3 {
+  margin-top: 0;
+}
+
+.esgotat {
+  color: #b3261e;
+  font-weight: bold;
+}
+
+.ultimes {
+  color: #c77700;
+  font-weight: bold;
+}
+
+.disponible {
+  color: #2E7D6B;
+  font-weight: bold;
+}
+
+.avis {
+  background: #fff3cd;
+  border: 1px solid #e0c36c;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+ul {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  padding: 1rem 1rem 1rem 2rem;
+}
+
+pre {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+}
